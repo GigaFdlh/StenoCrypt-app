@@ -12,8 +12,14 @@ class AboutView extends StatelessWidget {
         backgroundColor: AppColors.paper,
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColors.ink),
-        title: const Text("TECHNICAL DOSSIER", 
-          style: TextStyle(fontFamily: 'Typewriter', fontWeight: FontWeight.bold, color: AppColors.ink)),
+        title: const Text(
+          "TECHNICAL DOSSIER",
+          style: TextStyle(
+            fontFamily: 'Typewriter',
+            fontWeight: FontWeight.bold,
+            color: AppColors.ink,
+          ),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -26,60 +32,82 @@ class AboutView extends StatelessWidget {
                 children: [
                   const Icon(Icons.security, size: 50, color: AppColors.ink),
                   const SizedBox(height: 10),
-                  const Text("PROJECT: STENOCRYPT", 
-                    style: TextStyle(fontFamily: 'Typewriter', fontSize: 20, fontWeight: FontWeight.w900, color: AppColors.ink)),
-                  Text("v1.0.0 Stable Build", 
-                    style: TextStyle(fontFamily: 'Typewriter', fontSize: 12, color: AppColors.ink.withValues(alpha: 0.5))),
+                  const Text(
+                    "PROJECT: STENOCRYPT",
+                    style: TextStyle(
+                      fontFamily: 'Typewriter',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: AppColors.ink,
+                    ),
+                  ),
+                  Text(
+                    "v1.0.0 Stable Build",
+                    style: TextStyle(
+                      fontFamily: 'Typewriter',
+                      fontSize: 12,
+                      color: AppColors.ink.withValues(alpha: 0.5),
+                    ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 30),
-            
+
             const Divider(color: AppColors.ink, thickness: 2),
             const SizedBox(height: 20),
 
             _buildSectionTitle("1. STEGANOGRAPHY PROTOCOL (LSB)"),
             _buildContentText(
-                "The Least Significant Bit (LSB) method manipulates the last bit of pixel color components (RGB)."),
+              "The Least Significant Bit (LSB) method manipulates the last bit of pixel color components (RGB).",
+            ),
             _buildContentText(
-                "Human eyes cannot distinguish color changes of 1 bit (1/255). This allows us to inject data without visible visual degradation."),
-            
+              "Human eyes cannot distinguish color changes of 1 bit (1/255). This allows us to inject data without visible visual degradation.",
+            ),
+
             _buildCodeBlock(
               "PIXEL MANIPULATION EXAMPLE:\n"
               "Original Pixel: [10101100] (Red)\n"
               "Payload Bit   : [.......1] (Injected)\n"
               "Final Pixel   : [10101101] (Modified)\n"
-              ">> Visual change is undetectable."
+              ">> Visual change is undetectable.",
             ),
-            
+
             const SizedBox(height: 25),
 
             _buildSectionTitle("2. ENCRYPTION LAYER (AES-256)"),
             _buildContentText(
-                "Before injection, the text payload is secured using Advanced Encryption Standard (AES) with a 256-bit symmetric key."),
+              "Before injection, the text payload is secured using Advanced Encryption Standard (AES) with a 256-bit symmetric key.",
+            ),
             _buildContentText(
-                "User passwords are hashed using SHA-256 to ensure the encryption key always meets the 32-byte requirement."),
-            
+              "User passwords are hashed using SHA-256 to ensure the encryption key always meets the 32-byte requirement.",
+            ),
+
             _buildCodeBlock(
               "INPUT : 'Top Secret Intel'\n"
               "KEY   : '123456'\n"
               "OUTPUT: 'U2FsdGVkX1+...'\n"
-              ">> Data is unreadable without the key."
+              ">> Data is unreadable without the key.",
             ),
 
             const SizedBox(height: 25),
 
             _buildSectionTitle("3. INTEGRITY CHECK (SHA-256)"),
             _buildContentText(
-                "To prevent data tampering, the system appends a Digital Signature (Hash) to the message header."),
+              "To prevent data tampering, the system appends a Digital Signature (Hash) to the message header.",
+            ),
             _buildContentText(
-                "During decoding, the system compares the extracted Hash with a newly computed one. If they differ by even 1 character, the file is flagged as 'COMPROMISED'."),
+              "During decoding, the system compares the extracted Hash with a newly computed one. If they differ by even 1 character, the file is flagged as 'COMPROMISED'.",
+            ),
 
             const SizedBox(height: 40),
-            
+
             Center(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 decoration: BoxDecoration(
                   border: Border.all(color: AppColors.stamp, width: 3),
                   borderRadius: BorderRadius.circular(4),
@@ -137,7 +165,7 @@ class AboutView extends StatelessWidget {
           height: 1,
           width: double.infinity,
           color: AppColors.stamp.withValues(alpha: 0.3),
-        )
+        ),
       ],
     );
   }

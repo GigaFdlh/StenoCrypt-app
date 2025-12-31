@@ -16,12 +16,12 @@ class _DossierHomeState extends State<DossierHome> {
 
   Future<bool> _onWillPop() async {
     final now = DateTime.now();
-    if (currentBackPressTime == null || 
+    if (currentBackPressTime == null ||
         now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
       currentBackPressTime = now;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("PRESS BACK AGAIN TO ABORT MISSION"), // English
+          content: Text("PRESS BACK AGAIN TO ABORT MISSION"),
           backgroundColor: AppColors.ink,
           duration: Duration(seconds: 2),
         ),
@@ -33,20 +33,23 @@ class _DossierHomeState extends State<DossierHome> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
         backgroundColor: AppColors.paper,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25.0,
+              vertical: 20.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildHeader(),
                 const SizedBox(height: 40),
-                
-                // ENCODE CARD
+
                 _buildMenuCard(
                   context,
                   title: "ENCODE OPERATION",
@@ -55,10 +58,9 @@ class _DossierHomeState extends State<DossierHome> {
                   accentColor: AppColors.stamp,
                   onTap: () => _navigate(context, const EncodeView()),
                 ),
-                
+
                 const SizedBox(height: 20),
-                
-                // DECODE CARD
+
                 _buildMenuCard(
                   context,
                   title: "DECRYPT ARCHIVE",
@@ -70,7 +72,6 @@ class _DossierHomeState extends State<DossierHome> {
 
                 const SizedBox(height: 20),
 
-                // ABOUT CARD
                 _buildMenuCard(
                   context,
                   title: "MISSION PROTOCOL",
@@ -79,10 +80,9 @@ class _DossierHomeState extends State<DossierHome> {
                   accentColor: AppColors.folder,
                   onTap: () => _navigate(context, const AboutView()),
                 ),
-                
+
                 const Spacer(),
-                
-                // FOOTER
+
                 Center(
                   child: Column(
                     children: [
@@ -107,7 +107,7 @@ class _DossierHomeState extends State<DossierHome> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -117,10 +117,7 @@ class _DossierHomeState extends State<DossierHome> {
   }
 
   void _navigate(BuildContext context, Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
   Widget _buildHeader() {
@@ -135,7 +132,11 @@ class _DossierHomeState extends State<DossierHome> {
                 color: AppColors.ink,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(Icons.security, color: AppColors.paper, size: 24),
+              child: const Icon(
+                Icons.security,
+                color: AppColors.paper,
+                size: 24,
+              ),
             ),
             const SizedBox(width: 15),
             const Text(
@@ -151,16 +152,12 @@ class _DossierHomeState extends State<DossierHome> {
           ],
         ),
         const SizedBox(height: 10),
-        Container(
-          height: 2,
-          width: 60,
-          color: AppColors.stamp,
-        ),
+        Container(height: 2, width: 60, color: AppColors.stamp),
         const SizedBox(height: 10),
         const Text(
           "DIGITAL INTELLIGENCE AGENCY",
           style: TextStyle(
-            fontFamily: 'Typewriter', 
+            fontFamily: 'Typewriter',
             color: AppColors.ink,
             fontSize: 12,
             fontWeight: FontWeight.bold,
@@ -196,7 +193,7 @@ class _DossierHomeState extends State<DossierHome> {
                 offset: const Offset(0, 8),
                 blurRadius: 15,
                 spreadRadius: -2,
-              )
+              ),
             ],
           ),
           child: Row(
@@ -228,7 +225,7 @@ class _DossierHomeState extends State<DossierHome> {
                     Text(
                       subtitle,
                       style: TextStyle(
-                        fontFamily: 'Typewriter', 
+                        fontFamily: 'Typewriter',
                         fontSize: 11,
                         color: AppColors.ink.withValues(alpha: 0.7),
                         height: 1.3,
@@ -237,7 +234,11 @@ class _DossierHomeState extends State<DossierHome> {
                   ],
                 ),
               ),
-              Icon(Icons.arrow_forward_ios, size: 14, color: accentColor.withValues(alpha: 0.5)),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 14,
+                color: accentColor.withValues(alpha: 0.5),
+              ),
             ],
           ),
         ),
